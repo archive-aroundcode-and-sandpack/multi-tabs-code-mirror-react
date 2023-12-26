@@ -1,8 +1,23 @@
 import { useState } from 'react'
-import './App.css'
+
+type CodeFiles =  Record<string, { code: string, active?: boolean }>
+const startingFiles: CodeFiles = {
+  'index.js': {
+    code: `console.log('Hello World')`
+  },
+  'index.html': {
+    code: `<h1>Hello World</h1>`
+  },
+  'index.css': {
+    code: `h1 { color: red; }`
+  }
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [files, setFiles] = useState<CodeFiles>(startingFiles)
+  const activeFile = Object.keys(files).find((file) => files[file].active) || ''
+  const code = files[activeFile].code
+  const languageExtension = activeFile.split('.').pop() || ''
 
   return (
     <>
