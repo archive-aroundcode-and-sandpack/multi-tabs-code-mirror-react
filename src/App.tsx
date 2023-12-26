@@ -57,6 +57,7 @@ function App() {
         code={code} 
         extension={languageExtension} 
         onCodeUpdate={handleCodeUpdate}  
+        key={activeFile}
       />
     </>
   )
