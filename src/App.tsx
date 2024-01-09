@@ -25,7 +25,8 @@ function App() {
     setFiles((files) => ({
       ...files,
       [activeFile]: {
-        code
+        ...files[activeFile],
+        code,
       }
     }))
   }
